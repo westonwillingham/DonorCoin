@@ -4,7 +4,7 @@ Run the following commands in your terminal
 
 ```jsx
 git clone https://github.com/westonwillingham/DonorCoin.git
-cd DonorcCoin
+cd DonorCoin
 npm install
 npm run dev
 ```
