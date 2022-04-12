@@ -3,8 +3,8 @@ pragma solidity ^0.4.17;
 contract CampaignFactory {
     address[] public deployedCampaigns;
 
-    function createCampaign(uint256 minimum) public {
-        address newCampaign = new Campaign(minimum, msg.sender);
+    function createCampaign(uint256 minimum, string description) public {
+        address newCampaign = new Campaign(minimum, description, msg.sender);
         deployedCampaigns.push(newCampaign);
     }
 
@@ -28,14 +28,20 @@ contract Campaign {
     uint256 public minimumContribution;
     mapping(address => bool) public approvers;
     uint256 public approversCount;
+    string public campaignDescription;
 
     modifier restricted() {
         require(msg.sender == manager);
         _;
     }
 
-    function Campaign(uint256 minimum, address creator) public {
+    function Campaign(
+        uint256 minimum,
+        string description,
+        address creator
+    ) public {
         manager = creator;
+        campaignDescription = description;
         minimumContribution = minimum;
     }
 
@@ -90,7 +96,8 @@ contract Campaign {
             uint256,
             uint256,
             uint256,
-            address
+            address,
+            string
         )
     {
         return (
@@ -98,7 +105,8 @@ contract Campaign {
             this.balance,
             requests.length,
             approversCount,
-            manager
+            manager,
+            campaignDescription
         );
     }
 
