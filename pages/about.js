@@ -20,7 +20,7 @@ class About extends Component {
           </p>
           <p>
             This dApp enables contributors to vote on where money is donated in
-            these campaigns. The campaign manager cannot send money to feduciary
+            these campaigns. The campaign manager cannot send money to fiduciary
             recipients without the majority approval of the contributors.
           </p>
           <h3>How to Use This Application</h3>
